@@ -25,31 +25,63 @@ export const RoomDetail = ({ name, description, price, image }) => {
           <form>
             <div className="form-fields">
               <label htmlFor="field1" className="field-label">
-                Field 1:
+                Od:
               </label>
               <input id="field1" className="field-input" type="text" />
 
               <label htmlFor="field2" className="field-label">
-                Field 2:
+                Do:
               </label>
               <input id="field2" className="field-input" type="text" />
 
               <label htmlFor="select" className="field-label">
-                Select:
+                Počet osob:
               </label>
               <select id="select" className="field-input">
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-                <option>Option 4</option>
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+
+              <label htmlFor="select" className="field-label">
+                Stravování:
+              </label>
+              <select id="select" className="field-input">
+                <option>Žádné</option>
+                <option>Snídaně</option>
+                <option>Polopenze</option>
+                <option>Plná penze</option>
               </select>
 
               <label htmlFor="check1" className="field-label">
-                Checkbox 1:
+                Domácí mazlíček:
               </label>
               <input id="check1" className="field-input" type="checkbox" />
+
+              <label htmlFor="check2" className="field-label">
+                Přistýlka pro dítě:
+              </label>
+              <input id="check2" className="field-input" type="checkbox" />
+
+              <label htmlFor="check1" className="field-label">
+                Bezbariérový přístup:
+              </label>
+              <input id="check3" className="field-input" type="checkbox" />
+
+              <label htmlFor="field1" className="field-label">
+                E-mail:
+              </label>
+              <input id="field1" className="field-input" type="text" />
+
+              <label htmlFor="field1" className="field-label">
+                Telefon:
+              </label>
+              <input id="field1" className="field-input" type="text" />
             </div>
-            <button className="wide">Submit</button>
+            <strong>Celková cena za pobyt:</strong>
+            <button className="wide">Odeslat poptávku</button>
           </form>
         </div>
       </div>
