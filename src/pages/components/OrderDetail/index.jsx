@@ -1,16 +1,25 @@
-export const RoomDetail = () => {
+export const RoomDetail = ({ name, description, price, image }) => {
   return (
     <section className="light">
       <div className="container">
-        <h2>Jmeno pokoje</h2>
+        <h2>
+          {name
+            ? `Pokoj ${name}, ${price}`
+            : 'Pokoj Úkryt, 450 kč na osobu za noc'}
+        </h2>
         <div className="columns-2">
           <div className="column">
-            <img src="img/image1.svg" />
+            {!image ? (
+              <img src="http://localhost:4000/assets/img/pokoj01.jpg" />
+            ) : (
+              <img src={`http://localhost:4000${image}`} />
+            )}
+
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque
-              accusantium, dolor quisquam doloremque quod nobis temporibus
-              ducimus sapiente consectetur distinctio assumenda, nisi suscipit
-              saepe. Vero.
+              {' '}
+              {description
+                ? `${description}`
+                : 'Strohý avšak pohodlný pokoj ideální pro hosty, kteří chtějí maximálně ušetřit a hledají cenově dostupné ubytování bez ztráty základního komfortu. Vhodné pro všechny, kdo chtějí v našem hotelu rychle přečkat nepřízeň počasí a vydat se rychle zase na cestu ať už pěší nebo po řece.'}
             </p>
           </div>
           <form>

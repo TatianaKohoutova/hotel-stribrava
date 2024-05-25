@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { Room } from '../Room';
 
-export const RoomList = () => {
+export const RoomList = ({ onSelect }) => {
+  const [room, setRoom] = useState([]);
+
+  // let rooms = [];
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      const response = await fetch('http://localhost:4000/api/rooms');
+      const data = await response.json();
+      setRoom(data.data);
+      console.log(data.data);
+    };
+    fetchRooms();
+  }, []);
+
   return (
-    <section class="dark">
-      <div class="container">
+    <section className="dark">
+      <div className="container">
         <h2>Heading</h2>
         <p>Quas odio quidem, enim nihil unde quia tem poribus vitae in ab.</p>
-        <div class="cards-row">
-          <div class="card">
-            <img class="card__image" src="img/image1.svg" />
-            <div class="card__title">Card 1</div>
-            <div class="card__body">Sunt natus</div>
-          </div>
-
-          <div class="card">
-            <img class="card__image" src="img/image1.svg" />
-            <div class="card__title">Card 2</div>
-            <div class="card__body">Laboriosam</div>
-          </div>
-
-          <div class="card">
-            <img class="card__image" src="img/image1.svg" />
-            <div class="card__title">Card 3</div>
-            <div class="card__body">Eveniet officiis</div>
-          </div>
+        <div className="cards-row">
+          {room &&
+            room.map((selectedroom, index) => (
+              <Room
+                key={index}
+                onSelect={onSelect}
+                description={selectedroom.description}
+                name={selectedroom.name}
+                price={`${selectedroom.price} kč na osobu`}
+                img={selectedroom.image}
+              />
+            ))}
         </div>
       </div>
     </section>
