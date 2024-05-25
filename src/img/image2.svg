@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+  viewBox="0 0 1280 720"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect fill="#c8d96f" width="1280" height="720" x="0" y="0" />
+  <path
+    fill="#efefef"
+    d="M 787.02069,295.55077 502.00525,504.96199 354.98454,396.94051 81.046819,598.2125 H 1198.9531 Z"
+  />
+  <circle fill="#efefef" cx="250" cy="210" r="90" />
+</svg>
