@@ -3,6 +3,8 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { RoomDetail } from '../components/OrderDetail';
 import { RoomList } from '../components/RoomsList';
+// import { ReservationForm } from './ReservationForm';
+
 import './style.css';
 
 export const HomePage = () => {
@@ -17,6 +19,8 @@ export const HomePage = () => {
     setRoomPrice(price);
     setRoomImg(img);
   };
+
+  // <Link to="/reservation">Rezervace:</Link>;
 
   return (
     <>
