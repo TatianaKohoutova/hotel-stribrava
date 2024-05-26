@@ -20,9 +20,10 @@ export const AdminPage = () => {
   }, []);
 
   const handleConfirm = async (e) => {
-    setConfirmed('reservation-accepted');
+    e.preventDefault();
 
     const id = e.target.value;
+    console.log(id);
     await fetch(`http://localhost:4001/api/reservations/${id}`, {
       method: 'PATCH',
       headers: {
@@ -36,7 +37,9 @@ export const AdminPage = () => {
         },
       ]),
     });
-    // window.location.reload();
+
+    setConfirmed('reservation-accepted');
+    window.location.reload();
   };
 
   const handleCancel = async (e) => {
@@ -125,15 +128,23 @@ export const AdminPage = () => {
             </ul>
             <button
               className={`reserv-btn`}
-              value={index}
+              value={reservation.id}
               onClick={handleConfirm}
             >
               Prijmout rezervaci
             </button>
-            <button className="reserv-btn" value={index} onClick={handleCancel}>
+            <button
+              className="reserv-btn"
+              value={reservation.id}
+              onClick={handleCancel}
+            >
               Zamitnout rezervaci
             </button>
-            <button className="reserv-btn" value={index} onClick={handleCancel}>
+            <button
+              className="reserv-btn"
+              value={reservation.id}
+              onClick={handleCancel}
+            >
               Ukoncit rezervaci
             </button>
           </div>
