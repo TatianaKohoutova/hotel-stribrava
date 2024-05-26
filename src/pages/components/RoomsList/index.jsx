@@ -11,7 +11,7 @@ export const RoomList = ({ onSelect }) => {
       const response = await fetch('http://localhost:4000/api/rooms');
       const data = await response.json();
       setRoom(data.data);
-      console.log(data.data);
+      // console.log(data.data);
     };
     fetchRooms();
   }, []);
@@ -29,7 +29,7 @@ export const RoomList = ({ onSelect }) => {
                 onSelect={onSelect}
                 description={selectedroom.description}
                 name={selectedroom.name}
-                price={`${selectedroom.price} kč na osobu`}
+                price={selectedroom.price}
                 img={selectedroom.image}
               />
             ))}

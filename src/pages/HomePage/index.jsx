@@ -8,7 +8,7 @@ import './style.css';
 export const HomePage = () => {
   const [roomName, setRoomName] = useState('');
   const [roomDescription, setRoomDesctiption] = useState('');
-  const [roomPrice, setRoomPrice] = useState(null);
+  const [roomPrice, setRoomPrice] = useState(450);
   const [roomImg, setRoomImg] = useState(null);
 
   const roomSelect = (name, description, price, img) => {

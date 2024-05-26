@@ -6,12 +6,12 @@ export const Room = ({ name, price, img, description, onSelect }) => {
       className="card"
       onClick={() => {
         onSelect(name, description, price, img);
-        console.log(name);
+        // console.log(name);
       }}
     >
       <img className="card__image" src={`http://localhost:4000${img}`} />
       <div className="card__title">{name}</div>
-      <div className="card__body">{price}</div>
+      <div className="card__body">{`${price} kč na osobu`}</div>
     </div>
   );
 };
