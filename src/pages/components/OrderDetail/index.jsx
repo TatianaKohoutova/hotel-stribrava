@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const RoomDetail = ({ name, description, price, image }) => {
   const [dateFrom, setDateFrom] = useState('');
@@ -95,6 +95,33 @@ export const RoomDetail = ({ name, description, price, image }) => {
   const submitData = (e) => {
     e.preventDefault();
     alert('dekujeme za odeslani rezervaci, brzy vas budeme kontaktovat');
+
+    fetch('http://localhost:4001/api/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Admin',
+      },
+      body: JSON.stringify({
+        name: name,
+        new: true,
+        confirmed: false,
+        rejected: false,
+        arrivalDate: dateFrom,
+        departurelDate: dateTill,
+        detail: {
+          daysNumber: days,
+          peopleNumber: peopleNumber,
+          meals: meal,
+          pets: pet,
+          babyBed: baby,
+          wheelchair: wheelchair,
+          email: email,
+          mobile: mobile,
+        },
+      }),
+    });
+
     window.location.reload();
   };
 
