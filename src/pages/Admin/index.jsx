@@ -3,21 +3,21 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 
 export const AdminPage = () => {
-  const [reservation, setReservation] = useState(null);
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     // Volání API pro načtení dat
-    const fetchReservation = async () => {
+    const fetchReservations = async () => {
       const response = await fetch('http://localhost:4001/api/reservations');
       const data = await response.json();
-      setReservation(data.data);
+      setReservations(data.data);
     };
 
-    fetchReservation();
+    fetchReservations();
   }, []);
 
   // Pokud data nejsou ještě načtena, zobrazí se načítání
-  if (!reservation) {
+  if (!reservations.length) {
     return (
       <>
         <Header />
@@ -32,25 +32,25 @@ export const AdminPage = () => {
     <>
       <Header />
       <div>
-        <h1>Detaily rezervace:</h1>
-        <p>Pokoj: {reservation[0].name}</p>
-        <p>E-mail: {reservation[0].detail.email}</p>
-        <p>Kontakt: {reservation[0].detail.mobile}</p>
-        <p>Počet osob: {reservation[0].detail.peopleNumber}</p>
-        <p>Strava: {reservation[0].detail.meals}</p>
-        <p>Datum příjezdu: {reservation[0].arrivalDate}</p>
-        <p>Datum odjezdu: {reservation[0].departureDate}</p>
-        <p>Speciální požadavky:</p>
-        <ul>
-          <li>Zvířata: {reservation[0].detail.pets ? 'Ano' : 'Ne'}</li>
-          <li>
-            Dětská postýlky: {reservation[0].detail.babyBed ? 'Ano' : 'Ne'}
-          </li>
-          <li>
-            Bezbariérový přístup:{' '}
-            {reservation[0].detail.wheelchair ? 'Ano' : 'Ne'}
-          </li>
-        </ul>
+        <h1>Detaily rezervací:</h1>
+        {reservations.map((reservation, index) => (
+          <div key={index}>
+            <h2>Rezervace {index + 1}</h2>
+            <p>Pokoj: {reservation.name}</p>
+            <p>E-mail: {reservation.detail.email}</p>
+            <p>Kontakt: {reservation.detail.mobile}</p>
+            <p>Počet osob: {reservation.detail.peopleNumber}</p>
+            <p>Strava: {reservation.detail.meals}</p>
+            <p>Datum příjezdu: {reservation.arrivalDate}</p>
+            <p>Datum odjezdu: {reservation.departureDate}</p>
+            <p>Speciální požadavky:</p>
+            <ul>
+              <li>Zvířata: {reservation.detail.pets ? 'Ano' : 'Ne'}</li>
+              <li>Dětská postýlky: {reservation.detail.babyBed ? 'Ano' : 'Ne'}</li>
+              <li>Bezbariérový přístup: {reservation.detail.wheelchair ? 'Ano' : 'Ne'}</li>
+            </ul>
+          </div>
+        ))}
       </div>
       <Footer />
     </>
